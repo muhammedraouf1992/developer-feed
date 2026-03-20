@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BookmarkBtn from "./BookmarkBtn";
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, index = 0 }) => {
   const date = new Date(post.published_timestamp).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -11,7 +11,10 @@ const PostCard = ({ post }) => {
   });
 
   return (
-    <div className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm border border-zinc-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
+    <div
+      className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm border border-zinc-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 animate-fade-up"
+      style={{ animationDelay: `${index * 80}ms` }}
+    >
       <div className="flex flex-col flex-1 p-5 gap-3">
         {/* Author row */}
         <div className="flex items-center gap-2">

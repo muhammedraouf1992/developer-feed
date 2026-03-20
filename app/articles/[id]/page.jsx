@@ -4,6 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Clock, Heart, MessageCircle } from "lucide-react";
 
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const post = await getSinglePost(id);
+  return { title: post.title };
+}
+
 const Article = async ({ params }) => {
   const { id } = await params;
   const post = await getSinglePost(id);
@@ -16,7 +22,7 @@ const Article = async ({ params }) => {
 
   return (
     <main className="min-h-screen bg-zinc-50 px-4 py-10">
-      <div className="max-w-250 mx-auto">
+      <div className="max-w-250 mx-auto animate-fade-up">
         {/* Back link */}
         <Link
           href="/"
