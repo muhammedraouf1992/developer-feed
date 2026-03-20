@@ -1,3 +1,5 @@
+Live demo : https://developer-feed-gray.vercel.app/
+
 # DevFeed
 
 A developer article feed built with Next.js that pulls articles from the [dev.to](https://dev.to) public API. Browse the latest posts from the developer community and bookmark ones you want to read later.
@@ -14,12 +16,12 @@ A developer article feed built with Next.js that pulls articles from the [dev.to
 
 ## Tech Stack
 
-| Tool | Version | Role |
-|------|---------|------|
-| Next.js | 16.2.0 | Framework (App Router) |
-| React | 19.2.4 | UI |
-| Tailwind CSS | 4 | Styling |
-| Lucide React | latest | Icons |
+| Tool         | Version | Role                   |
+| ------------ | ------- | ---------------------- |
+| Next.js      | 16.2.0  | Framework (App Router) |
+| React        | 19.2.4  | UI                     |
+| Tailwind CSS | 4       | Styling                |
+| Lucide React | latest  | Icons                  |
 
 ## Project Structure
 
