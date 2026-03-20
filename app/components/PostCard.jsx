@@ -9,7 +9,12 @@ const PostCard = ({ post, index = 0 }) => {
     month: "short",
     day: "numeric",
   });
-
+  const tags = Array.isArray(post.tag_list)
+    ? post.tag_list
+    : post.tag_list
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
   return (
     <div
       className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm border border-zinc-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 animate-fade-up"
@@ -43,9 +48,9 @@ const PostCard = ({ post, index = 0 }) => {
         </Link>
 
         {/* Tags */}
-        {post.tag_list.length > 0 && (
+        {tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
-            {post.tag_list.slice(0, 4).map((tag) => (
+            {tags.map((tag) => (
               <span
                 key={tag}
                 className="px-2 py-0.5 text-xs rounded-full bg-zinc-100 text-zinc-600 font-mono"

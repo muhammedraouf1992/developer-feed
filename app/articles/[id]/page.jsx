@@ -14,6 +14,10 @@ const Article = async ({ params }) => {
   const { id } = await params;
   const post = await getSinglePost(id);
 
+  const tags = Array.isArray(post.tag_list)
+    ? post.tag_list
+    : post.tag_list.split(",").map((t) => t.trim()).filter(Boolean);
+
   const date = new Date(post.published_timestamp).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -51,7 +55,19 @@ const Article = async ({ params }) => {
             <h1 className="text-3xl font-bold text-zinc-900 leading-tight">
               {post.title}
             </h1>
-
+            {/* Tags */}
+            {tags.length > 0 && (
+              <div className="flex flex-wrap gap-1.5">
+                {tags.slice(0, 4).map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-2 py-0.5 text-xs rounded-full bg-zinc-100 text-zinc-600 font-mono"
+                  >
+                    #{tag.trim()}
+                  </span>
+                ))}
+              </div>
+            )}
             {/* Author + meta row */}
             <div className="flex items-center justify-between flex-wrap gap-4 pb-6 border-b border-zinc-100">
               <div className="flex items-center gap-3">
