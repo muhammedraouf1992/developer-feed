@@ -16,7 +16,10 @@ const Article = async ({ params }) => {
 
   const tags = Array.isArray(post.tag_list)
     ? post.tag_list
-    : post.tag_list.split(",").map((t) => t.trim()).filter(Boolean);
+    : post.tag_list
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
 
   const date = new Date(post.published_timestamp).toLocaleDateString("en-US", {
     year: "numeric",
@@ -39,13 +42,13 @@ const Article = async ({ params }) => {
         <article className="bg-white rounded-2xl shadow-sm border border-zinc-200 overflow-hidden">
           {/* Cover image */}
           {post.social_image && (
-            <div className="relative w-full h-100">
+            <div className="relative w-full lg:h-100 h-50">
               <Image
                 src={post.social_image}
                 fill
                 sizes="(max-width: 768px) 100vw, 768px"
                 alt={post.title}
-                className="object-cover"
+                className="lg:object-cover object-contain"
               />
             </div>
           )}
